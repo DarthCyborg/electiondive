@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Uncomment if you want your page to NOT be indexed by search engines: -->
+  <!-- <meta name="robots" content="none"> -->
+  <link rel="stylesheet" href="style.css" />
+  <title>Election Deep Dive</title>
+
+  <!-- Uncomment if using d3: -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/topojson@3"></script>
+
+</head>
+
+<!------------------------------------------------------------>
+<!-- You are free to modify this template however you want! -->
+<!------------------------------------------------------------>
+
+<body>
+
+  <div class="sidebar">
+    <!-- Sidebar Header -->
+    <div class="sidebar-header">
+        <h3>CSE 442</h3>
+        <h3>Final Project</h3>
+    </div>
+
+    <!-- Sidebar Links -->
+    <div class="sidebar-links">
+        <a href="#intro-section">• Introduction</a>
+        <a href="#background-section">• Background</a>
+        <a href="#primary-section">• Primaries</a>
+        <a href="#electoral-section">• Electoral College</a>
+        <a href="#electionday-section">• Election Day</a>
+        <a href="#inauguration-section">• Inauguration</a>
+        <!-- More links as needed -->
+    </div>
+  </div>
+
+<div id="intro-section">
+  <div class="section title-div hidden">
+    <h1>The U.S. Presidential Election Deep Dive</h1>
+  </div>
+
+  <div class="section hidden">
+    <p class="intro-text">
+      Every four years, millions of Americans come together to cast their votes and choose the next President
+      of the United States.
+      However, the full process of selecting candidates, collecting votes, and determining a winner
+      is a lot more intricate than a simple majority rule.
+      We aim to educate our viewers, both beginners and experts alike, on the entire election process
+      from beginning to end.
+      By providing a clear overview of the underlying mechanisms that make our democracy work, we hope to empower
+      our viewers to get more involved in the democratic process, and build a cohesive framework for
+      understanding important real-world political events.
+      <br> <br>
+      In this exploratory visualization, we are going to explore all key aspects of the US Presidential Election,
+      from the Primaries, the Electoral College, the Election Day, and finally the Inauguration.
+      To provide a backdrop for this journey, we'll be seeing how each of these core components factored into the
+      2020 election.
+    </p>
+  </div>
+</div>
+
+
+  <!-- ###################################### INTRODUCTION ###################################### -->
+  <div id="background-section">
+    <div class="section title-div hidden">
+      <h1>Background</h1>
+    </div>
+    
+    <div class="section hidden">
+      <p class="intro-text">
+        The 2020 presidential election in the United States was a pivotal moment that resonated globally. Against a
+        backdrop of intense political polarization, socio-economic upheaval, and the enduring effects of a worldwide
+        pandemic, this election stood as a defining crossroads for the nation.
+        The incumbent, President Donald Trump, sought re-election, championing a platform of
+        economic growth, conservative policies, and a promise to restore America's greatness. Opposing him was former Vice
+        President Joe Biden, advocating for unity, social justice, healthcare reform, and a comprehensive approach to
+        combating the COVID-19 crisis.
+      </p>
+    </div>
+
+    <div class="section hidden">
+      <p class="intro-text">
+        The election was conducted amidst unprecedented challenges, including the COVID-19 pandemic, which altered the
+        dynamics of traditional campaigning, prompting increased reliance on virtual communication and mail-in voting.
+        Moreover, concerns about the integrity of the electoral process added to the tension, leading to intense scrutiny
+        and debate over mail-in ballots, voter suppression, and the overall reliability of the election results.
+      </p>
+    </div>
+
+    <div class="section hidden" style="margin-bottom: 0;">
+      <p class="intro-text">
+        The outcome of presidential elections not only shape domestic policies and the course of the nation but also
+        reverberate globally, influencing diplomatic relations, international commitments, and the trajectory of global
+        issues like climate change, trade, and human rights.
+      </p>
+    </div>
+  </div>
+
+  <!-- ###################################### MORE INFORMATION ###################################### -->
+
+  <!-- <div class="section hidden">
+    <p class="intro-text">
+      The 2020 Democratic Party Presidential Primaries and Caucuses took place from February 3 to August 11, 2020.
+      A total of 3,979 pledged delegates were selected to the 2020 Democratic National Convention held on August 17-20
+      to determine the Democratic Party's presidential nominee for the 2020 United States Presidential Election. The
+      elections took place in all 50 U.S. States, the District of Columbia, five U.S. territories, and through Democrats
+      Abroad.
+    </p>
+    <br>
+    <p class="intro-text">
+      Below, we see the 5 leading candidates from the primaries. A total of 29 major candidates declared their
+      candidancies, the
+      largest field of presidential primary candidates for any American political party.
+    </p>
+    <br>
+    <p class="intro-text">
+      Hover over each candidate's photo to learn more about them.
+    </p>
+  </div>
+
+  <div class="section">
+    <div id="candidate-img-tooltip"></div>
+    <table id="candidate-table">
+    </table>
+  </div> -->
+
+  <!-- ###################################### PRIMARIES ###################################### -->
+
+
+  <div id="primary-section">
+    <div class="section title-div hidden">
+      <h1>The Primaries</h1>
+    </div>
+
+    <div class="section hidden">
+      <p class="intro-text">
+        The presidential primaries are a crucial component of the United States' democratic process, serving as a means
+        for political parties to select their respective
+        candidates for the presidency. Primary elections occur in all 50 states, the District of Columbia, and U.S.
+        territories.
+        <br> <br>
+        The goal of each primary is to accumulate delegates for a particular candidate. Delegates are individuals chosen
+        to represent their state/territory at the party's
+        national convention, where a candidate will officially be nominated for the presidency. The number of delegates in
+        each state are determined by population and political
+        significance, and are assigned to candidates based on the percentage of votes received. The ultimate goal of the
+        primary process is to secure a majority of delegates
+        needed to become the party's nominee for president.
+        <br> <br>
+        In 2020, both Democrats and Republicans hosted primaries, however we will focus only on the Democratic Primaries
+        since the Republicans had an incumbent president running in Donald Trump. Trump won all 56 of the Republican
+        Primaries,
+        taking nearly 94% of the votes.
+        <br> <br>
+        The Democratic Party Presidential Primaries and Caucuses took place from February 3rd to August 11th. A total of
+        3,979 pledged delegates were selected to the 2020 Democratic
+        National Convention held from August 17th to 20th. A total of 29 major candidates declared their candidacies, the
+        largest field of presidential primary candidates for any American
+        political party in history. 
+        <br> <br>
+        Check out the candidates below (click on their images for more information):
+      </p>
+    </div>
+
+    <div id="primary-layout">
+      <div id="candidate-images"></div>
+      <div id="candidate-tracker"></div>
+    </div>
+
+    <div id="primary-timeline" class="section">
+      <br>
+      <p class="intro-text subtitle">
+        Below, you can scroll through all of the major events of the Democratic Primaries. The
+        diagram above shows which candidates are still in the running.
+      </p>
+    </div>
+
+    <div id="event-details" class="section">
+      <div id="left-container"></div>
+      <div id="right-container"></div>
+    </div>
+
+    <div id="primary-map" class="section">
+      <p class="intro-text"><u>Winners of the Primaries</u></p>
+      <p class="intro-text subtitle">
+        Legend: <span class="legend-item" style="color: blue;">Joe Biden</span> |
+        <span class="legend-item" style="color: green;">Bernie Sanders</span> |
+        <span class="legend-item" style="color: yellow;">Pete Buttigieg</span>
+      </p>
+      <div id="primary-tooltip" class="hidden"></div>
+      <p class="intro-text subtitle">Hover over each state to see detailed results.</p>
+    </div>
+
+    <div class="section" style="margin-bottom: 0;">
+      <p class="intro-text">
+        The primaries were followed by the two presidential nominating conventions. The 2020 Democratic
+        National Convention was held from August 17th to 20th, where Democratic Party delegates formally chose
+        Joe Biden and Kamala Harris as the party's nominees for president and vice president, respectively.
+        <br>
+        The 2020 Republican National Convention was held just a few days later from August 24th to 27th, where
+        the Republican Party nominated President Donald Trump and Vice President Mike Pence for reelection.
+      </p>
+    </div>
+  </div>
+  <!-- ###################################### THE ELECTORAL COLLEGE ###################################### -->
+
+<div id="electoral-section">
+  <div class="section title-div hidden">
+    <h1>The Electoral College</h1>
+  </div>
+
+  <div class="section hidden">
+    <p class="intro-text">
+      Once the Democrat and Republican candidates are chosen in the primaries, it's time for them to begin campaigning.
+      On Election Day, the country comes together to choose the president for the next four years,
+      but it's not quite as simple as a popular vote.
+      To win the election, one candidate must win more electoral college votes than their opponent. But what does that
+      mean, exactly?
+      <br><br>
+      The Electoral College is a system used in the United States to determine the outcome of presidential elections.
+      Rather than electing the president directly through a popular vote, the Electoral College involves a process
+      where each state is allocated a certain number of electors based on its representation in Congress. These
+      electors,
+      equal to the number of senators and representatives a state has, then cast their votes for the president.
+      <br><br>
+      Here's how it works:
+    </p>
+    <br>
+    <ol class="intro-text">
+      <li>
+        <strong>Allocation of Electors:</strong>
+        <br>
+        <span style="font-size: large;">
+          Each state has a set number of electors, which is determined by the total number of senators (always two per
+          state)
+          plus the number of representatives in the House (based on the state's population).
+          For example, Washington has 2 delegates in the Senate and 10 delegates in the House of Representatives,
+          so Washington has 12 electors.
+        </span>
+      </li>
+      <li>
+        <strong>Winner-Takes-All (in Most States):</strong>
+        <br>
+        <span style="font-size: large;">
+          Most states follow a "winner-takes-all" system, where the candidate who wins the popular vote in that state gets
+          all of its electoral votes. However, Maine and Nebraska allocate their electoral votes based on the winner of
+          each congressional district.
+          Also, sometimes electors don't vote for the party that wins the state's popular vote.
+          Electors who do this are called "faithless electors," but they've never swung a presidential election in the
+          past.
+        </span>
+      </li>
+      <li>
+        <strong>270 Electoral Votes:</strong>
+        <br>
+        <span style="font-size: large;">
+          To win the presidency, a candidate needs to secure a majority of the electoral votes, which is currently
+          270 out of 538 total electors. If no candidate reaches this majority, the House of Representatives decides
+          the outcome from the top three candidates.
+        </span>
+      </li>
+      <li>
+        <strong>Meeting of Electors:</strong>
+        <br>
+        <span style="font-size: large;">
+          After the general election, typically in December, the electors meet in their respective states to cast
+          their votes for president and vice president. These votes are then transmitted to Congress to be
+          officially counted and certified.
+        </span>
+      </li>
+      <li>
+        <strong>Congressional Confirmation:</strong>
+        <br>
+        <span style="font-size: large;">
+          In January, during a joint session of Congress, the electoral votes are counted and officially confirmed.
+          The candidate who receives at least 270 electoral votes is declared the winner and becomes the next president.
+        </span>
+      </li>
+    </ol>
+    
+    <br>
+    <p class="intro-text">
+      An interesting facet of the electoral college is that it allows for states with lower populations
+      (and therefore fewer representatives in the House) to have a proportionally higher impact on the election
+      compared to what the popular vote might suggest. Let's visualize why this is the case:
+    </p>
+  </div>
+
+  <div id="electoralplaygroundwrapper">
+  <div class="section">
+    <div id="electoralexplanation">
+
+      <div class="button-container">
+        <button id="electorsButton">Electors</button>
+        <button id="populationButton">Population</button>
+        <button id="ratioButton">Ratio E/P</button>
+      </div>
+
+      <div id="electorsDisplay">Displaying: Map of State Electors</div>
+
+      <div id="electoralmap"></div>
+      <div id="tooltip" class="electoralmap-tooltip"></div>
+    </div>
+  </div>
+</div>
+
+  <div class="section">
+    <p class="intro-text">
+      The ratio of electors to population essentially illustrates the "strength" of a single person's vote in a given
+      state.
+      As illustrated in the visualization above, this sometimes has fairly dramatic implications - a vote from a Wyoming
+      resident
+      is worth nearly 4 times as much as a vote from a Californian.
+      <br> <br>
+      This situation has benefits and detriments - while detractors claim that it goes against the democratic spirit,
+      proponents
+      claim that it allows for rural representation when urban dwellers are detached from important issues in sparsely
+      populated areas.
+      Regardless of individual views, the electoral college is currently an essential facet of the presidential election
+      process, and one
+      that is worth thoroughly understanding.
+    </p>
+  </div>
+
+  <div class="section hidden" style="margin-bottom: 0;">
+    <p class="intro-text">
+      Swing states, also known as battleground states or purple states, play a crucial role in determining
+      the outcome of elections, especially in the context of the Electoral College system in the United States.
+    </p>
+    <br>
+    <p class="intro-text">
+      These states are termed "swing" because they don't consistently vote for a particular political party.
+      Their significance lies in their ability to potentially tip the balance of electoral votes in favor of one
+      candidate or another.
+      <br><br>
+      Several factors contribute to a state being labeled a swing state:
+    </p>
+    <br>
+    <ul class="intro-text">
+      <li>
+        <strong>Narrow Margins:</strong>
+        <br>
+        <span style="font-size: large;">
+          Swing states often have a relatively even split between voters affiliated with different political parties.
+          This balance makes their electoral votes highly contested, as even small shifts in voter preferences can sway
+          the results.
+        </span>
+      </li>
+      <li>
+        <strong>Diverse Demographics:</strong>
+        <br>
+        <span style="font-size: large;">
+          These states often represent a broad spectrum of demographics, including urban and rural areas, different
+          ethnicities,
+          income levels, and education backgrounds. As a result, they reflect a more diverse range of political opinions
+          and interests.
+        </span>
+      </li>
+      <li>
+        <strong>Historical Voting Patterns:</strong>
+        <br>
+        <span style="font-size: large;">
+          While swing states may have leaned toward a particular party in the past, their allegiance can change over
+          time due to evolving demographics, shifting policy priorities, or changes in party platforms.
+        </span>
+      </li>
+    </ul>
+    <br>
+    <p class="intro-text">
+      Swing states are crucial in election campaigns because winning them can significantly impact a candidate's
+      path to securing the necessary 270 electoral votes to win the presidency. Consequently, these states receive
+      heightened attention and campaign resources from candidates seeking to sway undecided voters or secure a marginal
+      advantage.
+      Candidates often tailor their policies, messaging, and campaign strategies to appeal specifically to voters in
+      these swing
+      states, recognizing the potential to win over crucial electoral votes that could make or break their chances of
+      winning the presidency.
+    </p>
+  </div>
+
+</div>
+
+  <!-- ###################################### ELECTION DAY ###################################### -->
+<div id="electionday-section">
+  <div class="section title-div hidden">
+    <h1>Election Day</h1>
+  </div>
+
+  <div class="section">
+    <p class="intro-text">
+      The first Tuesday after the first Monday in November is Election Day: in 2020, that day was November 3rd.
+      <br><br>
+      On the day of the election, people from across the country submit their ballots and the tallies begin - but
+      of course, it's a bit more complicated than that. 
+      <br><br>
+      There are four main types of votes cast during the presidential election:
+      <br><br>
+    </p>
+
+    <ul class="intro-text">
+      <li>
+        <strong>Absentee:</strong>
+        <br>
+        <span style="font-size: large;">
+          This type of voting allows voters to cast their ballot by mail or in person before the election day. 
+          It's primarily designed for those who cannot be present at their polling place on the day of the election,
+          for reasons such as being out of the country or having a disability. 
+          Voters usually need to request an absentee ballot before a specified deadline.
+        </span>
+      </li>
+      <li>
+        <strong>Early:</strong>
+        <br>
+        <span style="font-size: large;">
+          Early voting allows voters to cast their ballots in person at a designated polling place before the official election day.
+          The timeframe for early voting can vary from a few days to several weeks, depending on the jurisdiction.
+          This method is designed to increase voter participation and reduce congestion at polling places on election day.
+        </span>
+      </li>
+      <li>
+        <strong>Election Day:</strong>
+        <br>
+        <span style="font-size: large;">
+          This is the standard form of voting, where voters go to their assigned polling place on the day of the election.
+          They cast their ballot in person, usually via electronic voting machines, punch cards, or paper ballots.
+        </span>
+      </li>
+      <li>
+        <strong>Provisional:</strong>
+        <br>
+        <span style="font-size: large;">
+          Provisional ballots are used when there's some question about a voter's eligibility. 
+          This could happen if the voter's name is not on the electoral roll, if they don't have proper identification,
+          or if they've moved and didn't update their voter registration. Provisional ballots are kept separate from regular ballots. 
+          After the election, election officials determine the voter's eligibility, and if eligible, the vote is counted.
+        </span>
+      </li>
+    </ul>
+
+    <br>
+    <p class="intro-text">
+      Each of these voting methods is an integral part of the electoral process, offering flexibility and ensuring
+      that as many eligible voters as possible have the opportunity to participate in elections.
+      <br><br>
+      Explore the ballot-type breakdown across the states which reported this data in 2020:
+    </p>
+
+  </div>
+
+  <div class="section">
+    <div class='tableauPlaceholder' id='viz1702250023249' style='position: relative'><noscript><a href='#'><img
+            alt='Dashboard 1 '
+            src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Vo&#47;Votingmodesbystate2020&#47;Dashboard1&#47;1_rss.png'
+            style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+        <param name='embed_code_version' value='3' />
+        <param name='site_root' value='' />
+        <param name='name' value='Votingmodesbystate2020&#47;Dashboard1' />
+        <param name='tabs' value='no' />
+        <param name='toolbar' value='yes' />
+        <param name='static_image'
+          value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Vo&#47;Votingmodesbystate2020&#47;Dashboard1&#47;1.png' />
+        <param name='animate_transition' value='yes' />
+        <param name='display_static_image' value='yes' />
+        <param name='display_spinner' value='yes' />
+        <param name='display_overlay' value='yes' />
+        <param name='display_count' value='yes' />
+        <param name='language' value='en-US' />
+      </object></div>
+    <script type='text/javascript'>
+      var divElement = document.getElementById('viz1702250023249'); 
+      var vizElement = divElement.getElementsByTagName('object')[0]; 
+      if (divElement.offsetWidth > 800) { 
+        vizElement.style.width = '800px'; 
+        vizElement.style.height = '627px'; 
+      } else if (divElement.offsetWidth > 500) { 
+        vizElement.style.width = '800px'; 
+        vizElement.style.height = '627px'; 
+      } else { 
+        vizElement.style.width = '100%'; 
+        vizElement.style.height = '727px'; 
+      } 
+      var scriptElement = document.createElement('script'); 
+      scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; 
+      vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+    </script>
+  </div>
+
+  <div class="section">
+    <p class="intro-text">
+      Due to the multitude of voting options available to the American public, and due to the fact that there are over 100 million 
+      votes cast every single election, it can often take a while to get the full count. In many states, absentee and provisional ballots 
+      an be received several days after the election, as long as they are postmarked by election day - significantly extending the tallying process.
+      Additionally, some states may also have recount laws that automatically trigger a recount if the margin of victory is within a certain percentage.
+      <br> <br>
+      Once the vote-counting process in a given state is completed (a process which might take weeks), the state will be officially called in favor of
+      a candidate. While the media might show projections on Election Day regarding winners for each state, this information is based off incomplete data,
+      as many of the votes have yet to be counted. In close races, especially in swing states, media outlets might be especially cautious about prematurely 
+      calling a state for a candidate. 
+      In some states, where the margin of victory for a given candidate is high enough, the winner can be easily
+      predicted, but even then, the legal process of calling a state will not occur until several weeks after the election. 
+      <br> <br>
+      Once a state is called, its electoral votes will be awarded to the candidate that won the popular vote there.
+      Let's take a look at which states each 2020 candidate won, and which states made the difference.
+      <br>
+      To change which party the state's electors voted for, click on the state.
+    </p>
+  </div>
+
+  <div class="section" style="margin-bottom: 0;">
+    <div class="button-container">
+      <button id="allDemButton">Set all to Dem.</button>
+      <button id="playgroundResetButton">Reset</button>
+      <button id="allRepButton">Set all to Rep.</button>
+    </div>
+    <div id="elecplaybar"></div>
+    <div id="electoralplayground"></div>
+    <div id="tooltip"
+      style="position: absolute; opacity: 0; pointer-events: none; background-color: rgb(0, 0, 0); border: solid 1px #ccc; padding: 5px; border-radius: 5px; font-size: 14px;">
+    </div>
+  </div>
+
+</div>
+
+<div id="inauguration-section">
+
+  <div class="section title-div hidden">
+    <h1>Inauguration</h1>
+  </div>
+
+  <div class="section hidden">
+    <p class="intro-text">
+      Once all the individual votes are counted, the states certify the results, and the electors cast their votes,
+      the Electoral College results are sent to Congress to be officially counted during a joint session in the 
+      first week of January. 
+    </p>
+    <br>
+    <p class="intro-text">
+      The winner of the presidential election is officially declared during the joint congressional setting - whichever candidate
+      gets at least 270 out of the 538 available electoral votes is the new President-elect. On Inauguration Day (January 20th/21st if the 20th
+      falls on a Sunday), the new President of the United States is sworn into office.
+    </p>
+    <br>
+    <p class="intro-text">
+      The office of the President in the United States is perhaps the most powerful position any individual can attain in the modern world.
+      To ensure that anyone who ascends to such high office is up to the task of representing the American people, a long series of events
+      take place, giving every American citizen of voting age a chance to participate in one of the world's largest democratic processes. 
+      While the system may seem confusing at times, and while there are certainly flaws, a thorough understanding of the component elements
+      can go a long way towards ensuring that our democracy continues to operate smoothly - a goal that everyone, on both sides of the aisle,
+      can hope to strive for.
+    </p>
+  </div>
+
+</div>
+
+  <script src="drawMap.js"></script>
+  <script src="primaryData.js"></script>
+  <script src="primaryMap.js"></script>
+  <script src="app.js"></script>
+  <script src="primaries.js"></script>
+  <script src="main.js"></script>
+  <script src="electoralexplanation.js"></script>
+  <script src="elecplaybar.js"></script>
+  <script src="electoralplayground.js"></script>
+
+</body>
+
+<footer>
+  <p>
+    <a href=".">Election Deep Dive</a>
+    <br>
+    <a href="https://gitlab.cs.washington.edu/cse442/23au/final-project/electiondive">Repository</a>
+    <br>
+    <a href="https://courses.cs.washington.edu/courses/cse442/23au/">CSE 442 Data Visualization</a>
+    <br>
+    <a href="https://www.washington.edu">University of Washington</a>
+  </p>
+  <div class="copyright">
+    <p>&copy; Parum Misri, Rohith Leeladharan, Harshit Pandey</p>
+  </div>
+
+</footer>
+
+</html>

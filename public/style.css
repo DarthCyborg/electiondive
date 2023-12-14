@@ -1,0 +1,312 @@
+/* Reset padding and margin */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: black;
+  color: white;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  font: 18px/1.5 "Avenir", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+}
+
+.section {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  margin-bottom: 10vh;
+  max-width: 100%;
+  padding: 1vh 1vh;
+}
+
+.title-div {
+  text-align: center;
+  font-size: 7vh;
+  margin: 30vh 0;
+}
+
+.hidden {
+  opacity: 0;
+  transition: all 3s;
+}
+
+.show {
+  opacity: 1;
+}
+
+.intro-text {
+  max-width: 80%;
+  font-size: x-large;
+}
+
+.subtitle {
+  font-size: medium;
+}
+
+#candidate-img-tooltip {
+  position: absolute;
+  visibility: hidden;
+  background-color: lightgrey;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+footer {
+  max-width: 100%;
+  padding: 15px 40px;
+  text-align: right;
+  background-color: rgb(255, 255, 255);
+}
+
+.copyright {
+  width: 100%;
+  text-align: center;
+  color: black;
+}
+
+#primary-timeline {
+  width: calc(100%);
+  margin: 20px auto;
+  position: relative;
+}
+
+.slider-track {
+  stroke: gray;
+  stroke-width: 6px;
+  z-index: 1;
+}
+
+.slider-track-inset {
+  stroke: gray;
+  stroke-width: 6px;
+  z-index:2;
+}
+
+.slider-tick {
+  z-index: 3; /* Ensure ticks are below the handle */
+}
+
+.handle {
+  fill: #2A88E6;
+  stroke: #2A88E6;
+  stroke-opacity: 0.5;
+  stroke-width: 1.5px;
+  cursor: pointer;
+  pointer-events: all;
+  z-index: 4;
+}
+
+
+#electoralexplanation {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  justify-content: center; /* Center children vertically */
+  text-align: center; /* Center text */
+  height: 10vh; /* Set the height to full viewport height for vertical centering */
+  padding: 20px; /* Add some padding */
+  margin: 20vh 0;
+}
+
+#electoralmap {
+  width: 100%; /* Full width of the container */
+  margin-top: 20px; /* Space above the map */
+}
+
+.electoralmap-tooltip {
+  position: absolute; 
+  opacity: 0; 
+  pointer-events: none; 
+  background-color: rgb(0, 0, 0); 
+  border: solid 1px #ccc; 
+  padding: 5px; 
+  border-radius: 5px; 
+  font-size: 14px;
+}
+
+svg {
+  display: block; /* Ensures SVG is not inline */
+  margin: auto; /* Center the SVG horizontally */
+  max-width: 100%; /* Ensures SVG is responsive */
+  height: auto; /* Maintain aspect ratio */
+}
+
+
+/* Style for the container to align buttons horizontally */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Basic styling for buttons */
+button {
+  background-color: rgb(47, 57, 101); /* Green background */
+  color: white;             /* White text */
+  border: none;             /* No border */
+  padding: 10px 20px;       /* Top/bottom and left/right padding */
+  text-align: center;       /* Center the text inside the button */
+  text-decoration: none;    /* Remove underlines from text */
+  display: inline-block;    /* Allow side-by-side display */
+  font-size: 16px;          /* Increase font size */
+  margin: 4px 2px;          /* Margin around buttons */
+  transition-duration: 0.4s; /* Smooth transition for hover effect */
+  cursor: pointer;          /* Change cursor to pointer on hover */
+}
+
+/* Add a slight shadow for depth */
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#allDemButton {
+  background-color: #1c1cb9; /* Blue */
+  color: white; /* White text */
+}
+
+#playgroundResetButton {
+  background-color: #D3D3D3; /* Light gray */
+  color: black; /* Black text */
+}
+
+#allRepButton {
+  background-color: #b02121; /* Red */
+  color: white; /* White text */
+}
+
+#event-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Adjust the fr units as needed */
+  gap: 10px; /* Adjust the gap between the columns as needed */
+  align-items: start; /* This ensures that the content aligns to the top of each container */
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+#left-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the content vertically within the left container */
+  align-items: center; /* Center the content horizontally within the left container */
+  flex: 1; /* This ensures that the left container takes up an equal amount of space */
+  padding: 10px; /* Optional: adds some space inside the left container */
+}
+
+#right-container {
+  flex: 1; /* This ensures that the middle and right containers take up an equal amount of space */
+  padding: 10px; /* Optional: adds some space inside the middle and right containers */
+}
+
+/* Optionally, if you want to ensure they have a minimum width: */
+#left-container,
+#right-container {
+  width: 500px;
+  border: 1px solid #888; /* Gray border color */
+  border-radius: 10px; /* Rounded edges */
+  padding: 10px; /* Optional: adds some space inside the containers */
+}
+
+
+
+#primary-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Adjust the fr units as needed */
+  gap: 5px; /* Adjust the gap between the columns as needed */
+  align-items: start; /* This ensures that the content aligns to the top of each container */
+  margin: 0 auto;
+}
+
+#candidate-images {
+  width: 100%; /* Make sure the content takes the full width of its container */
+}
+
+#candidate-tracker {
+  width: 100%; /* Make sure the content takes the full width of its container */
+}
+
+#primary-tooltip {
+  position: absolute;
+  background: black;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 100%;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  /* Additional styling */
+}
+
+.sidebar-header {
+  padding: 10px;
+  background-color: #333; /* Dark background for the header */
+  color: white; /* Light text color */
+  text-align: center; /* Center the text */
+  border-bottom: 2px solid #ddd; /* Add a border at the bottom */
+}
+
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1; /* This will make the links container grow to fill available space */
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+  /* Additional styling */
+}
+
+.sidebar a:hover {
+  background-color: #ddd;
+}
+
+/* Style your sections */
+#intro-section, #background-section, #primary-section, #electoral-section, #electionday-section, #inauguration-section{
+  display: flex;
+  flex-direction: column; /* or 'row' depending on your layout */
+  align-items: center; /* Adjust as needed */
+  margin-left: 190px; /* Adjust based on sidebar width */
+  padding: 20px;
+  /* Additional styling */
+}
+
+
+#electoralplaygroundwrapper {
+  display: flex;
+  flex-direction: column; /* or 'row' depending on your layout */
+  align-items: center; /* Adjust as needed */
+  padding: 20px; /* Add padding to create space around the content */
+  margin-top: 30px; /* Add some space below the wrapper */
+  margin-bottom: 30px; /* Add some space below the wrapper */
+}
+
+
+.tableauPlaceholder {
+  width: 80%; /* Full width of the section */
+  margin: 0 auto; /* Centering it within the section */
+}
+
+.tableauViz {
+  width: 80%; /* Full width of the placeholder */
+  height: auto; /* Auto height to maintain aspect ratio */
+  min-height: 500px; /* Minimum height, can be adjusted based on your content */
+}
